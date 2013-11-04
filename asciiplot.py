@@ -1,8 +1,5 @@
 import math
 
-def normal(std_dev, mean, x):
-	return 1.0/(std_dev*math.sqrt(2.0*math.pi))*math.pow(math.e, -0.5*pow(x-mean, 2.0)/pow(std_dev, 2.0))
-
 def plot_points(points, xmin=-10, xmax=10, ymin=-10, ymax=10, xscale=5, yscale=5, width=150, height=40, blank=" ", filled="X", pointlist=False, axis=True):
 	scale = [width/(xmax-xmin), height/(ymax-ymin)]	
 	xming, yming = scale[0]*xmax, scale[1]*ymax
@@ -37,7 +34,7 @@ def plot_points(points, xmin=-10, xmax=10, ymin=-10, ymax=10, xscale=5, yscale=5
 		print "".join(row) 
 
 
-def plot_eq(eq, xmin=-10, xmax=10, ymin=-10, ymax=10, step=1.0, xscale=5, yscale=5, width=150, height=40, blank=" ", filled="X", pointlist=False, axis=True): #make y min/max value work!
+def plot_eq(eq, xmin=-10, xmax=10, ymin=-10, ymax=10, step=0.01, xscale=5, yscale=5, width=150, height=40, blank=" ", filled="X", pointlist=False, axis=True): #make y min/max value work!
 	points = []
 	x = xmin
 	while x <= xmax:
@@ -45,13 +42,5 @@ def plot_eq(eq, xmin=-10, xmax=10, ymin=-10, ymax=10, step=1.0, xscale=5, yscale
 		x += step
 
 	plot_points(points, xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, xscale=xscale, yscale=yscale, width=width, height=height, blank=blank, filled=filled, pointlist=pointlist, axis=axis)
-
-def parabola(x):
-	return math.pow(x, 2)
-
-def line(x):
-	return 5-x
-
-plot_eq(lambda x: math.sin(math.tan(x)), xmin=-math.pi, xmax=math.pi, ymax=1.5, ymin=-1.5, step=0.01, pointlist=True) # make axis not show if xmax > 0 or ymax > 0, etc....
 
 
