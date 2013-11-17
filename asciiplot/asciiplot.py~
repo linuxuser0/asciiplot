@@ -1,6 +1,6 @@
 import math
 
-def plot_points(points, xmin=-10, xmax=10, ymin=-10, ymax=10, xscale=5, yscale=5, width=150, height=40, blank=" ", pointlist=False, axis=True):
+def plot_points(points, xmin=-10, xmax=10, ymin=-10, ymax=10, xscale=5, yscale=5, width=150, height=40, blank=" ", filled="x", pointlist=False, axis=True):
 	scale = [width/(xmax-xmin), height/(ymax-ymin)]	
 	xming, yming = scale[0]*xmax, scale[1]*ymax
 	grid = [[blank for x in range(width+1)] for y in range(height+1)]
@@ -35,13 +35,13 @@ def plot_points(points, xmin=-10, xmax=10, ymin=-10, ymax=10, xscale=5, yscale=5
 		print "".join(row) 
 
 
-def plot_eq(eq, xmin=-10, xmax=10, ymin=-10, ymax=10, step=0.01, xscale=5, yscale=5, width=150, height=40, blank=" ", pointlist=False, axis=True):
+def plot_eq(eq, xmin=-10, xmax=10, ymin=-10, ymax=10, step=0.01, xscale=5, yscale=5, width=150, height=40, blank=" ", filled="x", pointlist=False, axis=True):
 	points = []		
 	x = xmin
 	while x <= xmax:
 		points.append([float(x), float(eq(x))])
 		x += step
 
-	plot_points(points, xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, xscale=xscale, yscale=yscale, width=width, height=height, blank=blank, pointlist=pointlist, axis=axis)
+	plot_points(points, xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, xscale=xscale, yscale=yscale, width=width, height=height, blank=blank, filled=filled, pointlist=pointlist, axis=axis)
 
 
